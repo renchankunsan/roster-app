@@ -1,0 +1,18 @@
+<h3>詳細</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>氏名</th><th>ふりがな</th><th>性別</th><th>年齢</th><th>生年月日</th><th>メールアドレス</th><th>出欠等状況</th><th>理由</th><th>編集</th>
+    </tr>
+    <tr>
+        <td><%= @roster.last_name %> <%= @roster.first_name %></td>
+        <td><%= @roster.last_furigana %> <%= @roster.first_furigana %></td>
+        <td><%= @roster.gender %></td>
+        <td><%= (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000 %></td>
+        <td><%= @roster.birthday.strftime("%Y年%m月%d日") %></td>
+        <td><%= @roster.email %></td>
+        <td></td>
+        <td></td>
+        <td><a href="/rosters/<%= @roster.id %>/edit">編集</a></td>
+    </tr>
+</table>

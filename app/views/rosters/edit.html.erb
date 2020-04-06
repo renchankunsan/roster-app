@@ -1,0 +1,43 @@
+<h3>名簿編集</h3>
+<%= form_tag("/rosters/"+@roster.id.to_s, :method => :patch) do %>
+    <div class="form-group">
+        <%= label_tag "form-name", "氏名" %>
+        <div class="form-inline">
+            <%= text_field :rosters, :last_name, id:"form-name", class:"form-control" ,placeholder:"姓", value: @roster.last_name %>
+            <%= text_field :rosters, :first_name, id:"form-name", class:"form-control" ,placeholder:"名", value: @roster.first_name %>
+        </div>
+        <%= label_tag "form-furigana", "ふりがな" %>
+        <div class="form-inline">
+            <%= text_field :rosters, :last_furigana, id:"form-furigana", class:"form-control" ,placeholder:"せい", value: @roster.last_furigana %>
+            <%= text_field :rosters, :first_furigana, id:"form-furigana", class:"form-control" ,placeholder:"めい", value: @roster.first_furigana %>
+        </div>
+    </div>
+    <div class="form-group">
+        <%= f.radio_button :rosters, :gender %>
+        <%= f.label :rosters_gender, "男性" %>
+        <%= f.radio_button :rosters, :gender %>
+        <%= f.label :rosters_gender, "女性" %>
+    </div>
+    <div class="form-group">
+        <%= label_tag "form-birthday", "生年月日" %>
+        <%= date_field :rosters, :birthday, id:"form-birthday", class:"form-control", value: @roster.birthday %>
+    </div>
+    <div class="form-group">
+        <%= label_tag "form-email", "メールアドレス" %>
+        <%= email_field :rosters, :email, id:"form-email", class:"form-control", placeholder: "メールアドレス", value: @roster.email %>
+    </div>
+    <div class="form-group">
+        <%= check_box_tag "check1" %><%= label_tag "check1","出席" %>
+        <%= check_box_tag "check2" %><%= label_tag "check2","欠席" %>
+        <%= check_box_tag "check3" %><%= label_tag "check3","遅刻" %>
+        <%= check_box_tag "check4" %><%= label_tag "check4","早退" %>
+        <%= check_box_tag "check5" %><%= label_tag "check5","その他" %>
+    </div>
+    <div class="form-group">
+        <%= text_area_tag "reason", "",  placeholder:"理由欄" %>
+    </div>
+    <%= submit_tag "更新", class:"btn btn-primary" %>or<a class="btn btn-danger" href="/rosters/<%= @roster.id %>" role="button" data-method="delete">削除</a>
+<% end %>
+
+<!-- editに出欠等チェックボックスを作り、チェックを入れて送信したら、indexにリダイレクトする、
+indexの出欠等に表示される仕様、indexの出欠等のデフォルトは空白、理由はshow-->

@@ -1,0 +1,23 @@
+<h3>名簿一覧</h3>
+<p><%= Date.today.strftime("%Y年%m月%d日") %></p>
+
+<%= form_tag("/", class:"form-inline", method: :post)do %>
+    <%= text_field_tag "find", "", {class:"form-control", placeholder:"氏名・ふりがな"} %>
+    <%= submit_tag "名簿検索", class:"btn btn-primary" %>
+<% end %>
+
+<table class="table table-bordered">
+    <tr>
+        <th>氏名</th><th>ふりがな</th><th>性別</th><th>年齢</th><th>出欠等状況</th><th>詳細</th>
+    </tr>
+    <% @rosters.each do |roster| %>
+    <tr>
+        <td><%= roster.last_name %> <%= roster.first_name %></td>
+        <td><%= roster.last_furigana %> <%= roster.first_furigana %></td>
+        <td><%= roster.gender %></td>
+        <td><%= (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000 %></td>
+        <td></td>
+        <td><a href="/rosters/<%= roster.id %>/show">詳細</a></td>
+    </tr>
+    <% end %>
+</table>
