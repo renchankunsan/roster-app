@@ -1,4 +1,5 @@
 <h3>名簿編集</h3>
+
 <%= form_tag("/rosters/"+@roster.id.to_s, :method => :patch) do %>
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
@@ -13,10 +14,10 @@
         </div>
     </div>
     <div class="form-group">
-        <%= f.radio_button :rosters, :gender %>
-        <%= f.label :rosters_gender, "男性" %>
-        <%= f.radio_button :rosters, :gender %>
-        <%= f.label :rosters_gender, "女性" %>
+        <%= radio_button_tag :gender, "男" %>
+        <%= label_tag :gender, "男" %>
+        <%= radio_button_tag :gender, "女" %>
+        <%= label_tag :gender, "女" %>
     </div>
     <div class="form-group">
         <%= label_tag "form-birthday", "生年月日" %>
@@ -27,16 +28,25 @@
         <%= email_field :rosters, :email, id:"form-email", class:"form-control", placeholder: "メールアドレス", value: @roster.email %>
     </div>
     <div class="form-group">
-        <%= check_box_tag "check1" %><%= label_tag "check1","出席" %>
-        <%= check_box_tag "check2" %><%= label_tag "check2","欠席" %>
-        <%= check_box_tag "check3" %><%= label_tag "check3","遅刻" %>
-        <%= check_box_tag "check4" %><%= label_tag "check4","早退" %>
-        <%= check_box_tag "check5" %><%= label_tag "check5","その他" %>
+        <%= check_box_tag :attendance, "出席" %>
+        <%= label_tag :attendance,"出席" %>
+        <%= check_box_tag :attendance, "欠席" %>
+        <%= label_tag :attendance,"欠席" %>
+        <%= check_box_tag :attendance, "遅刻" %>
+        <%= label_tag :attendance,"遅刻" %>
+        <%= check_box_tag :attendance, "早退" %>
+        <%= label_tag :attendance,"早退" %>
+        <%= check_box_tag :attendance, "その他" %>
+        <%= label_tag :attendance,"その他" %>
     </div>
     <div class="form-group">
-        <%= text_area_tag "reason", "",  placeholder:"理由欄" %>
+        <%= text_area_tag :remarks, @roster.remarks, placeholder:"備考欄" %>
     </div>
     <%= submit_tag "更新", class:"btn btn-primary" %>or<a class="btn btn-danger" href="/rosters/<%= @roster.id %>" role="button" data-method="delete">削除</a>
+<% end %>
+
+<%= link_to :back do %>
+    <button class="btn btn-primary">詳細に戻る</button>
 <% end %>
 
 <!-- editに出欠等チェックボックスを作り、チェックを入れて送信したら、indexにリダイレクトする、

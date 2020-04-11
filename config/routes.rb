@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #一覧
   get "/" => "rosters#index"
   #検索
-  post "/" => "rosters#index"
+  post "/rosters/index" => "rosters#index"
   #詳細
   get "/rosters/:id/show" => "rosters#show"
   #作成
@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   patch "/rosters/:id" => "rosters#update"
   #削除
   delete "/rosters/:id" => "rosters#destroy"
-  #出欠等
-  get "/rosters/:id/status" => "rosters#status"
   
   #resources :(モデル名) でルーティングが一括構築できる
 end

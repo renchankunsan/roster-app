@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405070525) do
+ActiveRecord::Schema.define(version: 20200411175434) do
 
   create_table "rosters", force: :cascade do |t|
-    t.string   "last_name"
-    t.integer  "gender"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "email"
-    t.date     "birthday"
-    t.string   "last_furigana"
-    t.string   "first_name"
-    t.string   "first_furigana"
+    t.string "last_name"
+    t.string "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.date "birthday"
+    t.string "last_furigana"
+    t.string "first_name"
+    t.string "first_furigana"
+    t.string "attendance"
+    t.integer "age"
+    t.string "remarks"
   end
 
 end

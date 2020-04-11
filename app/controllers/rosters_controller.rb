@@ -1,11 +1,7 @@
 class RostersController < ApplicationController
      def index
-          if params[:find]
-               @rosters = Roster.where(['last_name LIKE ? OR first_name LIKE ? OR last_furigana LIKE ? OR first_furigana LIKE ?',
-               "%#{params[:find]}%", "%#{params[:find]}%", "%#{params[:find]}%", "%#{params[:find]}%"]).order("last_furigana")
-          else
-               @rosters = Roster.all.order("last_furigana")
-          end
+          @q = Roster.ransack(params[:q])
+          @rosters = @q.result(distinct: true).order(params[:sort])
      end
      
      def show
@@ -16,10 +12,14 @@ class RostersController < ApplicationController
      end
      
      def create
-          Roster.create(last_name:params["rosters"]["last_name"],first_name:params["rosters"]["first_name"],
-          last_furigana:params["rosters"]["last_furigana"],first_furigana:params["rosters"]["first_furigana"],
-          gender:params["rosters"]["gender"],birthday:params["rosters"]["birthday"],email:params["rosters"]["email"])
-          redirect_to "/"
+          if @roster = Roster.create(last_name:params["rosters"]["last_name"],first_name:params["rosters"]["first_name"],
+             last_furigana:params["rosters"]["last_furigana"],first_furigana:params["rosters"]["first_furigana"],
+             gender:params[:gender],birthday:params["rosters"]["birthday"],email:params["rosters"]["email"],
+             age:(Date.today.strftime("%Y%m%d").to_i - params["rosters"]["birthday"].strftime("%Y%m%d").to_i)/10000).valid?
+               redirect_to "/"
+          else
+               render plain: "error"
+          end
      end
      
      def edit
@@ -32,9 +32,12 @@ class RostersController < ApplicationController
           roster.first_name = params["rosters"]["first_name"]
           roster.last_furigana = params["rosters"]["last_furigana"]
           roster.first_furigana = params["rosters"]["first_furigana"]
-          roster.gender = params["rosters"]["gender"]
+          roster.gender = params[:gender]
           roster.birthday = params["rosters"]["birthday"]
           roster.email = params["rosters"]["email"]
+          roster.attendance = params[:attendance]
+          roster.remarks = params[:remarks]
+          roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
           roster.save
           redirect_to "/"
           

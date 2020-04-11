@@ -1,10 +1,35 @@
 <h3>名簿一覧</h3>
 <p><%= Date.today.strftime("%Y年%m月%d日") %></p>
 
-<%= form_tag("/", class:"form-inline", method: :post)do %>
-    <%= text_field_tag "find", "", {class:"form-control", placeholder:"氏名・ふりがな"} %>
-    <%= submit_tag "名簿検索", class:"btn btn-primary" %>
+<%= search_form_for @q, url: {controller:'rosters', action:'index'} do |f| %>
+  <%= f.search_field :first_name_or_last_name_or_first_furigana_or_last_furigana_cont, placeholder:"氏名・ふりがな" %>
+  
+  <%= f.radio_button :gender_eq, "", {:checked => true} %>
+  <%= f.label :gender, "指定なし" %>
+  <%= f.radio_button :gender_eq, "男" %>
+  <%= f.label :gender, "男" %>
+  <%= f.radio_button :gender_eq, "女" %>
+  <%= f.label :gender, "女" %>
+  
+  <%= f.number_field :age_eq, min:0, placeholder:"年齢" %>
+  
+  <%= f.radio_button :attendance_eq, "", {:checked => true} %>
+  <%= f.label :attendance, "指定なし" %>
+  <%= f.radio_button :attendance_eq, "出席" %>
+  <%= f.label :attendance, "出席" %>
+  <%= f.radio_button :attendance_eq, "欠席" %>
+  <%= f.label :attendance, "欠席" %>
+  <%= f.radio_button :attendance_eq, "遅刻" %>
+  <%= f.label :attendance, "遅刻" %>
+  <%= f.radio_button :attendance_eq, "早退" %>
+  <%= f.label :attendance, "早退" %>
+  <%= f.radio_button :attendance_eq, "その他" %>
+  <%= f.label :attendance, "その他" %>
+  
+  <%= f.submit '検索', class:"btn btn-primary" %>
 <% end %>
+
+<%= select_tag :sort, options_for_select("氏名昇順":"last_furigana ASC","氏名降順":"last_furigana DESC"), include_blank: true %>
 
 <table class="table table-bordered">
     <tr>
@@ -15,8 +40,8 @@
         <td><%= roster.last_name %> <%= roster.first_name %></td>
         <td><%= roster.last_furigana %> <%= roster.first_furigana %></td>
         <td><%= roster.gender %></td>
-        <td><%= (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000 %></td>
-        <td></td>
+        <td><%= roster.age %></td>
+        <td><%= roster.attendance %></td>
         <td><a href="/rosters/<%= roster.id %>/show">詳細</a></td>
     </tr>
     <% end %>

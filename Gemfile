@@ -5,8 +5,14 @@ gem "bootstrap-sass","~>3.3.6"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 
+#ransack(検索フォーム作成ツール)を導入
+gem 'ransack'
+
+#バリデーションのエラーメッセージを日本語化
+gem 'rails-i18n'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
@@ -37,6 +43,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # N+1問題検知ツールの導入
+  gem 'bullet'
 end
 
 group :development do
