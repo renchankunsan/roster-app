@@ -1,6 +1,15 @@
 <h3>名簿作成</h3>
 
-<%= form_tag("/rosters/create")do %>
+<!--undefined method `errors' for nil:NilClass-->
+<!--% if @roster.errors.any? %-->
+<!--    <ul>-->
+<!--        % @roster.errors.full_messages.each do |error| %-->
+<!--            <li>%= error %</li>-->
+<!--        % end %-->
+<!--    </ul>-->
+<!--% end %-->
+
+<%= form_tag("/rosters/create") do %>
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
         <div class="form-inline">

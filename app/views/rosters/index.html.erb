@@ -1,7 +1,7 @@
 <h3>名簿一覧</h3>
 <p><%= Date.today.strftime("%Y年%m月%d日") %></p>
 
-<%= search_form_for @q, url: {controller:'rosters', action:'index'} do |f| %>
+<%= search_form_for @q, url:{controller:"rosters", action:"index"} do |f| %>
   <%= f.search_field :first_name_or_last_name_or_first_furigana_or_last_furigana_cont, placeholder:"氏名・ふりがな" %>
   
   <%= f.radio_button :gender_eq, "", {:checked => true} %>
@@ -29,11 +29,10 @@
   <%= f.submit '検索', class:"btn btn-primary" %>
 <% end %>
 
-<%= select_tag :sort, options_for_select("氏名昇順":"last_furigana ASC","氏名降順":"last_furigana DESC"), include_blank: true %>
-
 <table class="table table-bordered">
     <tr>
-        <th>氏名</th><th>ふりがな</th><th>性別</th><th>年齢</th><th>出欠等状況</th><th>詳細</th>
+        <!-- sort_link...ransackのソート機能 -->
+        <th><%= sort_link(@q, :last_furigana, "氏名") %></th><th>ふりがな</th><th><%= sort_link(@q, :gender, "性別") %></th><th><%= sort_link(@q, :age, "年齢") %></th><th><%= sort_link(@q, :attendance, "出欠等") %></th><th>詳細</th>
     </tr>
     <% @rosters.each do |roster| %>
     <tr>
