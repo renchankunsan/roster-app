@@ -14,9 +14,9 @@
         </div>
     </div>
     <div class="form-group">
-        <%= radio_button_tag :gender, "男", checked: %>
+        <%= radio_button_tag :gender, "男" %>
         <%= label_tag :gender, "男" %>
-        <%= radio_button_tag :gender, "女", checked: %>
+        <%= radio_button_tag :gender, "女" %>
         <%= label_tag :gender, "女" %>
     </div>
     <div class="form-group">
@@ -28,15 +28,15 @@
         <%= email_field :rosters, :email, id:"form-email", class:"form-control", placeholder: "メールアドレス", value: @roster.email %>
     </div>
     <div class="form-group">
-        <%= radio_button_tag :attendance, "出席", checked: %>
+        <%= radio_button_tag :attendance, "出席" %>
         <%= label_tag :attendance,"出席" %>
-        <%= radio_button_tag :attendance, "欠席", checked: %>
+        <%= radio_button_tag :attendance, "欠席" %>
         <%= label_tag :attendance,"欠席" %>
-        <%= radio_button_tag :attendance, "遅刻", checked: %>
+        <%= radio_button_tag :attendance, "遅刻" %>
         <%= label_tag :attendance,"遅刻" %>
-        <%= radio_button_tag :attendance, "早退", checked: %>
+        <%= radio_button_tag :attendance, "早退" %>
         <%= label_tag :attendance,"早退" %>
-        <%= radio_button_tag :attendance, "その他", checked: %>
+        <%= radio_button_tag :attendance, "その他" %>
         <%= label_tag :attendance,"その他" %>
     </div>
     <div class="form-group">
@@ -48,6 +48,3 @@
 <%= link_to :back do %>
     <button class="btn btn-primary">詳細に戻る</button>
 <% end %>
-
-<!-- editに出欠等チェックボックスを作り、チェックを入れて送信したら、indexにリダイレクトする、
-indexの出欠等に表示される仕様、indexの出欠等のデフォルトは空白、理由はshow-->
