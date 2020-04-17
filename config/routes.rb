@@ -8,19 +8,6 @@ Rails.application.routes.draw do
   get "/rosters/:id/edit" => "rosters#edit" #更新
   patch "/rosters/:id" => "rosters#update"
   delete "/rosters/:id" => "rosters#destroy" #削除
-  
-  #categories
-  
-  #users
-  get "/users/signup" => "users#new"
-  post "/users/create" => "users#create"
-  get "/users/login" => "users#login"
-  post "/users/check" => "users#check"
-  get "/users/:id" => "users#index"
-  get "/users/:id/show" => "users#show"
-  get "/users/:id/edit" => "users#edit"
-  patch "/users/:id" => "users#update"
-  delete "/users/:id" => "users#destroy"
 end
 
 #resources :(モデル名) でルーティングが一括構築できる

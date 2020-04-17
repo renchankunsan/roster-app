@@ -12,17 +12,14 @@ class RostersController < ApplicationController
      end
      
      def create
-          @roster = Roster.create(last_name:params["rosters"]["last_name"],first_name:params["rosters"]["first_name"],
-          last_furigana:params["rosters"]["last_furigana"],first_furigana:params["rosters"]["first_furigana"],
-          gender:params[:gender],birthday:params["rosters"]["birthday"],email:params["rosters"]["email"])
-
+          @roster = Roster.create(last_name:params["rosters"]["last_name"],
+                                     first_name:params["rosters"]["first_name"],
+                                     last_furigana:params["rosters"]["last_furigana"],
+                                     first_furigana:params["rosters"]["first_furigana"],
+                                     gender:params[:gender],
+                                     birthday:params["rosters"]["birthday"],
+                                     email:params["rosters"]["email"])
           @roster.age = (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000
-
-          if @roster.save
-               redirect_to "/"
-          else
-               render "new"
-          end
      end
      
      def edit
@@ -41,12 +38,7 @@ class RostersController < ApplicationController
           roster.attendance = params[:attendance]
           roster.remarks = params[:remarks]
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
-          
-          if roster.save
-               redirect_to "/"
-          else
-               render "edit"
-          end
+          roster.save
      end
      
      def destroy
