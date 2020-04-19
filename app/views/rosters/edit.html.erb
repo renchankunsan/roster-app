@@ -1,6 +1,9 @@
 <h3>名簿編集</h3>
 
-<%= form_tag("/rosters/"+@roster.id.to_s, {method: :patch}) do %>
+<!--余裕あればform_withに-->
+
+<%= form_tag("/rosters/"+@roster.id.to_s, :method => :patch) do %>
+
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
         <div class="form-inline">
@@ -42,9 +45,8 @@
     <div class="form-group">
         <%= text_area_tag :remarks, @roster.remarks, class:"form-control", placeholder:"備考欄" %>
     </div>
-    <%= submit_tag "更新", class:"btn btn-primary" %>or<a class="btn btn-danger" href="/rosters/<%= @roster.id %>" role="button" data-method="delete">削除</a>
-<% end %>
-
-<%= link_to :back do %>
-    <button class="btn btn-primary">詳細に戻る</button>
+    <%= submit_tag "更新", class:"btn btn-primary" %>
+    <%= link_to "削除", "/rosters/"+@roster.id.to_s, class:"btn btn-danger", :method => :delete %>
+    or
+    <%= link_to "詳細に戻る", :back, class:"btn btn-primary" %>
 <% end %>

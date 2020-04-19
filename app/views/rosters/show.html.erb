@@ -1,20 +1,18 @@
-<h3>詳細</h3>
+<h3>名簿詳細</h3>
 
-<table class="table table-bordered">
-    <tr>
-        <th>氏名</th><th>ふりがな</th><th>性別</th><th>年齢</th><th>生年月日</th><th>メールアドレス</th><th>出欠等状況</th><th>備考</th><th>編集</th>
-    </tr>
-    <tr>
-        <td><%= @roster.last_name %> <%= @roster.first_name %></td>
-        <td><%= @roster.last_furigana %> <%= @roster.first_furigana %></td>
-        <td><%= @roster.gender %></td>
-        <td><%= @roster.age %></td>
-        <td><%= @roster.birthday.strftime("%Y年%m月%d日") %></td>
-        <td><%= @roster.email %></td>
-        <td><%= @roster.attendance %></td>
-        <td><%= @roster.remarks %></td>
-        <td><a href="/rosters/<%= @roster.id %>/edit">編集</a></td>
-    </tr>
-</table>
+<!--% if @roster.image? %>-->
+<!--    %= image_tag @roster.image.url %>-->
+<!--% else %>-->
+<!--    %= image_tag "no_image.gif" %>-->
+<!--% end %>-->
+<h1><ruby><%= @roster.last_name %><rt><%= @roster.last_furigana %></rt>&nbsp;<%= @roster.first_name %><rt><%= @roster.first_furigana %></rt></ruby></h1>
+<p>性別：<%= @roster.gender %></p>
+<p>年齢：<%= @roster.age %>歳</p>
+<p>生年月日：<%= @roster.birthday.strftime("%Y年%m月%d日") %></p>
+<p>メールアドレス：<%= @roster.email %></p>
+<p>出欠等状況：<%= @roster.attendance %></p>
+<p>備考：<%= @roster.remarks %></p>
 
+<%= link_to "編集", "/rosters/"+@roster.id.to_s+"/edit", class:"btn btn-primary" %>
+or
 <%= link_to "一覧に戻る", "/", class:"btn btn-primary" %>

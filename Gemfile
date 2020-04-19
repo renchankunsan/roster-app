@@ -5,11 +5,14 @@ gem "bootstrap-sass","~>3.3.6"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 
-#ransack(検索フォーム作成ツール)を導入
+#ransack(検索フォーム作成ツール)
 gem 'ransack'
 
 #バリデーションのエラーメッセージを日本語化
 gem 'rails-i18n'
+
+#画像のアップロード
+gem 'carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
@@ -60,3 +63,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#ページネーション
+gem 'kaminari'

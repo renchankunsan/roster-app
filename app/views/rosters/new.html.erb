@@ -3,8 +3,12 @@
 <!--undefined method `errors' for nil:NilClass-->
 <!--% if @roster.errors.any? %-->
 
-<!--%= form_with url:"/rosters/create" do |form| %-->
+<!--余裕あればform_withに-->
 <%= form_tag("/rosters/create") do %>
+
+    <!--<div class="form-group">-->
+    <!--    %= label_tag "form-image", "画像をアップロード" %><br>%= file_field :rosters, :image, id:"form-image" %>-->
+    <!--</div>-->
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
         <div class="form-inline">
@@ -32,8 +36,6 @@
         <%= email_field :rosters, :email, id:"form-email", class:"form-control" ,placeholder:"メールアドレス" %>
     </div>
     <%= submit_tag "作成", class:"btn btn-primary" %>
-<% end %>
-
-<%= link_to :back do %>
-    <button class="btn btn-primary">戻る</button>
+    or
+    <%= link_to "一覧に戻る", "/", class:"btn btn-primary" %>
 <% end %>

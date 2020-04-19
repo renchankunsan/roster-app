@@ -32,7 +32,12 @@
 <table class="table table-bordered">
     <tr>
         <!-- sort_link...ransackのソート機能 -->
-        <th><%= sort_link(@q, :last_furigana, "氏名") %></th><th>ふりがな</th><th><%= sort_link(@q, :gender, "性別") %></th><th><%= sort_link(@q, :age, "年齢") %></th><th><%= sort_link(@q, :attendance, "出欠等") %></th><th>詳細</th>
+        <th><%= sort_link(@q, :last_furigana, "氏名") %></th>
+        <th>ふりがな</th>
+        <th><%= sort_link(@q, :gender, "性別") %></th>
+        <th><%= sort_link(@q, :age, "年齢") %></th>
+        <th><%= sort_link(@q, :attendance, "出欠等") %></th>
+        <th>詳細</th>
     </tr>
     <% @rosters.each do |roster| %>
     <tr>
@@ -41,7 +46,9 @@
         <td><%= roster.gender %></td>
         <td><%= roster.age %></td>
         <td><%= roster.attendance %></td>
-        <td><a href="/rosters/<%= roster.id %>/show">詳細</a></td>
+        <td><%= link_to "詳細", "/rosters/"+ roster.id.to_s + "/show" %></td>
     </tr>
     <% end %>
 </table>
+
+<%= paginate @rosters %>
