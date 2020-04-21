@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  #users
+  get "users/index" => "users#index"
+  get "users/show" => "users#index"
+
   #rosters
   get "/" => "rosters#index" #一覧
   post "/rosters/index" => "rosters#index" #検索

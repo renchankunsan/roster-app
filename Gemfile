@@ -14,6 +14,12 @@ gem 'rails-i18n'
 #画像のアップロード
 gem 'carrierwave'
 
+#ページネーション
+gem 'kaminari'
+
+#ユーザー認証機能
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
@@ -63,6 +69,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-#ページネーション
-gem 'kaminari'
