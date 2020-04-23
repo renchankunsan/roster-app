@@ -17,8 +17,10 @@ gem 'carrierwave'
 #ページネーション
 gem 'kaminari'
 
-#ユーザー認証機能
+#ユーザー認証機能と日本語化
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'

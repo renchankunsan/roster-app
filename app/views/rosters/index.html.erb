@@ -4,16 +4,16 @@
 <%= search_form_for @q, url:{controller:"rosters", action:"index"} do |f| %>
   <%= f.search_field :first_name_or_last_name_or_first_furigana_or_last_furigana_cont, placeholder:"氏名・ふりがな" %>
   
-  <%= f.radio_button :gender_eq, "", {:checked => true} %>
+  [ <%= f.radio_button :gender_eq, "", {:checked => true} %>
   <%= f.label :gender, "指定なし" %>
   <%= f.radio_button :gender_eq, "男" %>
   <%= f.label :gender, "男" %>
   <%= f.radio_button :gender_eq, "女" %>
-  <%= f.label :gender, "女" %>
-  
+  <%= f.label :gender, "女" %> ]
+ 
   <%= f.number_field :age_eq, min:0, placeholder:"年齢" %>
   
-  <%= f.radio_button :attendance_eq, "", {:checked => true} %>
+  [ <%= f.radio_button :attendance_eq, "", {:checked => true} %>
   <%= f.label :attendance, "指定なし" %>
   <%= f.radio_button :attendance_eq, "出席" %>
   <%= f.label :attendance, "出席" %>
@@ -24,11 +24,12 @@
   <%= f.radio_button :attendance_eq, "早退" %>
   <%= f.label :attendance, "早退" %>
   <%= f.radio_button :attendance_eq, "その他" %>
-  <%= f.label :attendance, "その他" %>
+  <%= f.label :attendance, "その他" %> ]
   
   <%= f.submit '検索', class:"btn btn-primary" %>
 <% end %>
-
+* * *
+<p>氏名・性別・年齢・出欠等状況をクリックすると並べ替えができます（昇順・降順）</p>
 <table class="table table-bordered">
     <tr>
         <!-- sort_link...ransackのソート機能 -->
