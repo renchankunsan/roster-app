@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #deviseをuserモデルに適用するぞ
   devise_for :users
-  
+
   #rosters
   get "/" => "rosters#index" #一覧
   post "/rosters/index" => "rosters#index" #検索

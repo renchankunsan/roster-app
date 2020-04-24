@@ -1,4 +1,6 @@
 class RostersController < ApplicationController
+     before_action :authenticate_user!, except: :index
+     
      def index
           @q = Roster.ransack(params[:q])
           @rosters = @q.result(distinct: true).order(last_furigana:"asc").page(params[:page]).per(10)
