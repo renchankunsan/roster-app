@@ -1,5 +1,9 @@
 class RostersController < ApplicationController
-     before_action :authenticate_user!, except: :index
+     before_action :authenticate_user!, except: :top
+     
+     def top
+          render :layout => "before_layout"
+     end
      
      def index
           @q = Roster.ransack(params[:q])
@@ -25,7 +29,7 @@ class RostersController < ApplicationController
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
           roster.attendance = "未入力"
           roster.save
-          redirect_to "/"
+          redirect_to "/rosters"
      end
 
      def edit
@@ -52,6 +56,6 @@ class RostersController < ApplicationController
      def destroy
           roster = Roster.find(params[:id])
           roster.destroy
-          redirect_to "/"
+          redirect_to "/rosters"
      end
 end

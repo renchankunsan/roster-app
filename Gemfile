@@ -56,6 +56,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # N+1問題検知ツールの導入
   gem 'bullet'
+  #テストパッケージ
+  gem 'rspec-rails'
 end
 
 group :development do

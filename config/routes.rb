@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   #rosters
-  get "/" => "rosters#index" #一覧
+  get "/" => "rosters#top" #トップページ
+  get "/rosters" => "rosters#index" #一覧
   post "/rosters/index" => "rosters#index" #検索
   get "/rosters/:id/show" => "rosters#show" #詳細
   get "/rosters/new" => "rosters#new" #作成
