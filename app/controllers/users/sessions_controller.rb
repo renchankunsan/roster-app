@@ -23,4 +23,16 @@ class Users::SessionsController < Devise::SessionsController
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   end
+  
+  #リダイレクトを使うとエラーがでるpathで表記
+  #ログイン後のリダイレクト先
+  # def after_sign_in_path_for(resource)
+    # リダイレクト先のパス
+    # redirect_to "/rosters"
+  # end 
+  #ログアウト後のリダイレクト先
+  # def after_sign_out_path_for(resource)
+    # リダイレクト先のパス
+    # redirect_to "/"
+  # end
 end

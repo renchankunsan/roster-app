@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  #deviseをuserモデルに適用するぞ
-  devise_for :users
+  #deviseをuserモデルに適用するぞ #usersのregistrations,sessoinsコントローラに変更
+  devise_for :users, controllers: {registrations:'users/registrations', sessions:'users/sessions'}
 
   #rosters
   get "/" => "rosters#top" #トップページ
