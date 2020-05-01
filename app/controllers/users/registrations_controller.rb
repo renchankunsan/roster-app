@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     super(resource)
-    # redirect_to "/rosters"
-    #リダイレクトを使うとエラーがでる pathで表記
+    rosters_path
+    #redirect_toを使うとエラーがでるのでpathで表記
   end
 end
