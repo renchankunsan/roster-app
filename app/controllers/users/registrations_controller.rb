@@ -60,4 +60,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     rosters_path
     #redirect_toを使うとエラーがでるのでpathで表記
   end
+  
+  #アカウント編集後のリダイレクト先
+  def after_update_path_for(resource)
+    rosters_path
+  end
 end
