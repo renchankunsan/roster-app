@@ -15,6 +15,7 @@ class RostersController < ApplicationController
      end
 
      def new
+          # @roster = Roster.new
      end
 
      def create
