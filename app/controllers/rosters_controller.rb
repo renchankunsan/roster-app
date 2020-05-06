@@ -16,17 +16,19 @@ class RostersController < ApplicationController
 
      def new
           # @roster = Roster.new
+          @categories = Category.all
      end
 
      def create
-          roster = Roster.create(  image: params[:rosters][:image],
-                                   last_name: params[:rosters][:last_name],
-                                   first_name: params[:rosters][:first_name],
-                                   last_furigana: params[:rosters][:last_furigana],
-                                   first_furigana: params[:rosters][:first_furigana],
-                                   gender: params[:gender],
-                                   birthday: params[:rosters][:birthday],
-                                   email: params[:rosters][:email])
+          roster = Roster.create(  image: params["rosters"]["image"],
+                                   last_name: params["rosters"]["last_name"],
+                                   first_name: params["rosters"]["first_name"],
+                                   last_furigana: params["rosters"]["last_furigana"],
+                                   first_furigana: params["rosters"]["first_furigana"],
+                                   gender: params["gender"],
+                                   birthday: params["rosters"]["birthday"],
+                                   category_id: params["rosters"]["category_id"],
+                                   email: params["rosters"]["email"])
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
           roster.attendance = "未入力"
           roster.save

@@ -37,6 +37,7 @@
         <th>ふりがな</th>
         <th><%= sort_link(@q, :gender, "性別") %></th>
         <th><%= sort_link(@q, :age, "年齢") %></th>
+        <th>カテゴリ</th>
         <th><%= sort_link(@q, :attendance, "出欠等") %></th>
         <th>詳細</th>
     </tr>
@@ -46,6 +47,7 @@
         <td><%= roster.last_furigana %> <%= roster.first_furigana %></td>
         <td><%= roster.gender %></td>
         <td><%= roster.age %></td>
+        <td><%= roster.category.name %></td>
         <td><%= roster.attendance %></td>
         <td><%= link_to "詳細", "/rosters/"+ roster.id.to_s + "/show" %></td>
     </tr>
