@@ -3,7 +3,6 @@
 <!--余裕あればform_withに-->
 
 <%= form_tag("/rosters/"+@roster.id.to_s, :method => :patch) do %>
-
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
         <div class="form-inline">
@@ -17,33 +16,29 @@
         </div>
     </div>
     <div class="form-group">
-        <%= radio_button_tag 'rosters[gender]', "男", @roster.gender == "男" %>
+        <%= radio_button_tag 'rosters[gender]', '男', @roster.gender == "男" %>
         <%= label_tag "rosters_gender", "男" %>
-        <%= radio_button_tag 'rosters[gender]', "女", @roster.gender == "女" %>
+        <%= radio_button_tag 'rosters[gender]', '女', @roster.gender == "女" %>
         <%= label_tag "rosters_gender", "女" %>
     </div>
     <div class="form-group">
         <%= label_tag "form-birthday", "生年月日" %>
         <%= date_field :rosters, :birthday, id:"form-birthday", class:"form-control", value: @roster.birthday %>
     </div>
-    <!--<div class="form-group">-->
-    <!--    %= label_tag "form-category", "カテゴリ" %>-->
-    <!--    %= select_tag 'rosters[category_id]', options_from_collection_for_select(@categories, :id, :name), id:"form-category", class:"form-control" %>-->
-    <!--</div>-->
     <div class="form-group">
         <%= label_tag "form-email", "メールアドレス" %>
         <%= email_field :rosters, :email, id:"form-email", class:"form-control", placeholder: "メールアドレス", value: @roster.email %>
     </div>
     <div class="form-group">
-        <%= radio_button_tag 'rosters[attendance]', "出席", @roster.attendance == "出席" %>
+        <%= radio_button_tag 'rosters[attendance]', '出席', @roster.attendance == "出席" %>
         <%= label_tag "rosters_attendance","出席" %>
-        <%= radio_button_tag 'rosters[attendance]', "欠席", @roster.attendance == "欠席" %>
+        <%= radio_button_tag 'rosters[attendance]', '欠席', @roster.attendance == "欠席" %>
         <%= label_tag "rosters_attendance", "欠席" %>
-        <%= radio_button_tag 'rosters[attendance]', "遅刻", @roster.attendance == "遅刻" %>
+        <%= radio_button_tag 'rosters[attendance]', '遅刻', @roster.attendance == "遅刻" %>
         <%= label_tag "rosters_attendance", "遅刻" %>
-        <%= radio_button_tag 'rosters[attendance]', "早退", @roster.attendance == "早退" %>
+        <%= radio_button_tag 'rosters[attendance]', '早退', @roster.attendance == "早退" %>
         <%= label_tag "rosters_attendance", "早退" %>
-        <%= radio_button_tag 'rosters[attendance]', "その他", @roster.attendance == "その他" %>
+        <%= radio_button_tag 'rosters[attendance]', 'その他', @roster.attendance == "その他" %>
         <%= label_tag "rosters_attendance", "その他" %>
     </div>
     <div class="form-group">

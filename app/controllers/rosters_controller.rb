@@ -41,7 +41,7 @@ class RostersController < ApplicationController
 
      def update
           roster = Roster.find(params[:id])
-          roster.image = params["rosters"]["image"]
+          # roster.image = params["rosters"]["image"]
           roster.last_name = params["rosters"]["last_name"]
           roster.first_name = params["rosters"]["first_name"]
           roster.last_furigana = params["rosters"]["last_furigana"]
