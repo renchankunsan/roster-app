@@ -18,9 +18,9 @@
     </div>
     <div class="form-group">
         <%= radio_button_tag 'rosters[gender]', "男", @roster.gender == "男" %>
-        <%= label_tag "form-gender", "男" %>
+        <%= label_tag "rosters_gender", "男" %>
         <%= radio_button_tag 'rosters[gender]', "女", @roster.gender == "女" %>
-        <%= label_tag "form-gender", "女" %>
+        <%= label_tag "rosters_gender", "女" %>
     </div>
     <div class="form-group">
         <%= label_tag "form-birthday", "生年月日" %>
@@ -35,19 +35,19 @@
         <%= email_field :rosters, :email, id:"form-email", class:"form-control", placeholder: "メールアドレス", value: @roster.email %>
     </div>
     <div class="form-group">
-        <%= radio_button_tag :attendance, "出席", @roster.attendance == "出席" %>
-        <%= label_tag :attendance,"出席" %>
-        <%= radio_button_tag :attendance, "欠席", @roster.attendance == "欠席" %>
-        <%= label_tag :attendance,"欠席" %>
-        <%= radio_button_tag :attendance, "遅刻", @roster.attendance == "遅刻" %>
-        <%= label_tag :attendance,"遅刻" %>
-        <%= radio_button_tag :attendance, "早退", @roster.attendance == "早退" %>
-        <%= label_tag :attendance,"早退" %>
-        <%= radio_button_tag :attendance, "その他", @roster.attendance == "その他" %>
-        <%= label_tag :attendance,"その他" %>
+        <%= radio_button_tag 'rosters[attendance]', "出席", @roster.attendance == "出席" %>
+        <%= label_tag "rosters_attendance","出席" %>
+        <%= radio_button_tag 'rosters[attendance]', "欠席", @roster.attendance == "欠席" %>
+        <%= label_tag "rosters_attendance", "欠席" %>
+        <%= radio_button_tag 'rosters[attendance]', "遅刻", @roster.attendance == "遅刻" %>
+        <%= label_tag "rosters_attendance", "遅刻" %>
+        <%= radio_button_tag 'rosters[attendance]', "早退", @roster.attendance == "早退" %>
+        <%= label_tag "rosters_attendance", "早退" %>
+        <%= radio_button_tag 'rosters[attendance]', "その他", @roster.attendance == "その他" %>
+        <%= label_tag "rosters_attendance", "その他" %>
     </div>
     <div class="form-group">
-        <%= text_area_tag :remarks, @roster.remarks, class:"form-control", placeholder:"備考欄" %>
+        <%= text_area_tag 'rosters[remarks]', @roster.remarks, class:"form-control", placeholder:"備考欄" %>
     </div>
     <%= submit_tag "更新", class:"btn btn-primary" %>
     <%= link_to "削除", "/rosters/"+@roster.id.to_s, class:"btn btn-danger", :method => :delete %>
