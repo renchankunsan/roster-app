@@ -12,8 +12,11 @@ module RosterApp
     
     #特定のコントローラ・ビューにカスタムレイアウトを適用
     config.to_prepare do
+      Devise::ConfirmationsController.layout "before_layout"
+      Devise::PasswordsController.layout "before_layout"
       Devise::RegistrationsController.layout "before_layout"
       Devise::SessionsController.layout "before_layout"
+      Devise::UnlocksController.layout "before_layout"
     end
     
     # Settings in config/environments/* take precedence over those specified here.
