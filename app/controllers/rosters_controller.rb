@@ -21,14 +21,14 @@ class RostersController < ApplicationController
 
      def create
           roster = Roster.create(  #image: params["rosters"]["image"],
-                                   last_name: params["rosters"]["last_name"],
-                                   first_name: params["rosters"]["first_name"],
-                                   last_furigana: params["rosters"]["last_furigana"],
-                                   first_furigana: params["rosters"]["first_furigana"],
-                                   gender: params["rosters"]["gender"],
-                                   birthday: params["rosters"]["birthday"],
-                                   category_id: params["rosters"]["category_id"],
-                                   email: params["rosters"]["email"])
+                                   last_name: params[:rosters][:last_name],
+                                   first_name: params[:rosters][:first_name],
+                                   last_furigana: params[:rosters][:last_furigana],
+                                   first_furigana: params[:rosters][:first_furigana],
+                                   gender: params[:rosters][:gender],
+                                   birthday: params[:rosters][:birthday],
+                                   category_id: params[:rosters][:category_id],
+                                   email: params[:rosters][:email])
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
           roster.attendance = "未入力"
           roster.save
@@ -37,21 +37,22 @@ class RostersController < ApplicationController
 
      def edit
           @roster = Roster.find(params[:id])
+          @categories = Category.all
      end
 
      def update
           roster = Roster.find(params[:id])
-          # roster.image = params["rosters"]["image"]
-          roster.last_name = params["rosters"]["last_name"]
-          roster.first_name = params["rosters"]["first_name"]
-          roster.last_furigana = params["rosters"]["last_furigana"]
-          roster.first_furigana = params["rosters"]["first_furigana"]
-          roster.gender = params["rosters"]["gender"]
-          roster.birthday = params["rosters"]["birthday"]
-          roster.category_id = params["rosters"]["category_id"]
-          roster.email = params["rosters"]["email"]
-          roster.attendance = params["rosters"]["attendance"]
-          roster.remarks = params["rosters"]["remarks"]
+          roster.update!( # roster.image = params["rosters"]["image"],
+                         last_name: params[:rosters][:last_name],
+                         first_name: params[:rosters][:first_name],
+                         last_furigana: params[:rosters][:last_furigana],
+                         first_furigana: params[:rosters][:first_furigana],
+                         gender: params[:rosters][:gender],
+                         birthday: params[:rosters][:birthday],
+                         category_id: params[:rosters][:category_id],
+                         email: params[:rosters][:email],
+                         attendance: params[:rosters][:attendance],
+                         remarks: params[:rosters][:remarks])
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
           roster.save
           redirect_to "/rosters/" + params[:id].to_s + "/show"
