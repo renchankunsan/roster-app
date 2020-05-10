@@ -12,6 +12,7 @@
 - AWS Cloud9
 - Heroku
 - RSpec
+- macOS
 
 ## 機能
 - ユーザー登録・削除、ログイン・ログアウト(devise)
@@ -21,14 +22,12 @@
 - 名簿のソート(ransack)
 - ページネーション(kaminari)
 
-## 使い方
-
 ## デプロイ
 
 ## 作者
-**南雲 蓮**(ナグモ レン)  
+### **南雲 蓮**(なぐも れん)  
 1998年3月30日生まれ  
 中央大学法学部法律学科 2020年3月卒業  
 2020年2月半ばよりプログラミング学習を開始  
 Wantedlyは[こちら](https://www.wantedly.com/users/121193001)  
-mail: drumer.lotus.9403@gmail.com  
+メールアドレス: drumer.lotus.9403@gmail.com  
