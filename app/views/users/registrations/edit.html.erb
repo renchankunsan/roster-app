@@ -1,6 +1,6 @@
 <div class="user-view">
-  <h2>アカウント情報変更 <%= resource_name.to_s.humanize %></h2>
-  
+  <h2>アカウント情報</h2>
+  <h3>アカウント編集</h3>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     
@@ -19,11 +19,10 @@
     <% end %>
   
     <div class="field">
-      <%= f.label :password, "パスワード" %> <i>(変更しない場合は空欄のままにしてください)</i><br />
+      <%= f.label :password, "パスワード" %><em>(<%= @minimum_password_length %>文字以上)</em><br><i>(変更しない場合は空欄のままにしてください)</i><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
       <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %>文字以上</em>
       <% end %>
     </div>
   
@@ -33,7 +32,7 @@
     </div>
   
     <div class="field">
-      <%= f.label :current_password, "現在のパスワード" %> <i>(本人の意思での変更であることを確認する為に入力が必要です)</i><br />
+      <%= f.label :current_password, "現在のパスワード" %> <br><i>(本人の操作であることを確認する為に入力が必要です)</i><br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
   
@@ -43,8 +42,9 @@
   <% end %>
   
   <h3>アカウント削除</h3>
-  
-  <p>よろしいですか？ <%= button_to "アカウント削除", registration_path(resource_name), class:"btn btn-danger", data: { confirm: "本当によろしいですか？" }, method: :delete %></p>
-  
-  <%= link_to "戻る", :back, class:"btn btn-primary" %>
+  <p>よろしいですか？</p>
+  <%= button_to "アカウント削除", registration_path(resource_name), class:"btn btn-danger", data: { confirm: "本当によろしいですか？" }, method: :delete %>
+  <div class="actions">
+    <%= link_to "戻る", :back, class:"btn btn-primary" %>
+  </div>
 </div>

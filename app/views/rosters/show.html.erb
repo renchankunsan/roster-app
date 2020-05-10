@@ -1,4 +1,4 @@
-<h3>名簿詳細</h3>
+<h2>名簿詳細</h2>
 
 <!--% if @roster.image? %>-->
 <!--    %= image_tag @roster.image.url %>-->
@@ -11,9 +11,9 @@
 <p>生年月日：<%= @roster.birthday.strftime("%Y年%m月%d日") %></p>
 <p>カテゴリ：<%= @roster.category.name %></p>
 <p>メールアドレス：<%= @roster.email %></p>
-<p>出欠等状況：<%= @roster.attendance %></p>
+<p>出欠等：<%= @roster.attendance %></p>
 <p>備考：<%= @roster.remarks %></p>
 
 <%= link_to "編集", "/rosters/"+@roster.id.to_s+"/edit", class:"btn btn-primary" %>
 or
-<%= link_to "一覧に戻る", "/rosters", class:"btn btn-primary" %>
+<%= link_to "一覧に戻る", "/rosters", class:"btn btn-default" %>
