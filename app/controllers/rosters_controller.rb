@@ -6,7 +6,7 @@ class RostersController < ApplicationController
      end
      
      def index
-          @q = Roster.ransack(params[:q])
+          @q = Roster.where(user_id: current_user.id).ransack(params[:q])
           @rosters = @q.result(distinct: true).order(last_furigana:"asc").page(params[:page]).per(10)
      end
      
@@ -28,9 +28,12 @@ class RostersController < ApplicationController
                                    gender: params[:rosters][:gender],
                                    birthday: params[:rosters][:birthday],
                                    category_id: params[:rosters][:category_id],
-                                   email: params[:rosters][:email])
+                                   email: params[:rosters][:email],
+                                   attendance: "未入力",
+                                   user_id: current_user.id)
           roster.age = (Date.today.strftime("%Y%m%d").to_i - roster.birthday.strftime("%Y%m%d").to_i)/10000
-          roster.attendance = "未入力"
+          # roster.attendance = "未入力"
+          # roster.user_id = current_user.id
           roster.save
           redirect_to "/rosters"
      end
