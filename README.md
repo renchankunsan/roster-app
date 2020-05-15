@@ -9,6 +9,7 @@
 - Bootstrap 3.3.7
 - Ruby 2.6.3
 - Ruby on Rails 5.1.7
+- SQLite3
 - AWS Cloud9
 - Heroku
 - RSpec
