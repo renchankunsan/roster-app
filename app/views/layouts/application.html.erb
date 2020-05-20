@@ -20,7 +20,7 @@
           
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li class="navbar-text">こんにちは、<%= current_user.username %>さん</li>
+              <!--<li class="navbar-text">こんにちは、%= current_user.username %>さん</li>-->
               <li><%= link_to "アカウント情報", edit_user_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <% else %>

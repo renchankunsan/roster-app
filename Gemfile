@@ -17,11 +17,6 @@ gem 'carrierwave'
 #ページネーション
 gem 'kaminari'
 
-#ユーザー認証機能と日本語化
-gem 'devise'
-gem 'devise-i18n'
-gem 'devise-i18n-views'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
@@ -74,6 +69,13 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   #デバックツールの導入
   gem 'pry-byebug'
+end
+
+group :development, :production, :test do
+  #ユーザー認証機能と日本語化
+  gem 'devise'
+  gem 'devise-i18n'
+  gem 'devise-i18n-views'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
