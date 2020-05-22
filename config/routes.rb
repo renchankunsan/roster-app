@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "/rosters/:id/edit" => "rosters#edit" #更新
   patch "/rosters/:id" => "rosters#update"
   delete "/rosters/:id" => "rosters#destroy" #削除
+  
+  get "/categories/new" => "categories#new"
+  post "/categories/create" => "categories#create"
 end
 
 #resources :(モデル名) でルーティングが一括構築できる

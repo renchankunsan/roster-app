@@ -1,0 +1,12 @@
+<h2>カテゴリ作成</h2>
+
+<%= form_tag("/categories/create") do %>
+    <div class="form-inline">
+        <%= text_field :categories, :name, class:"form-control" %>
+    </div>
+    <%= submit_tag "作成", class:"btn btn-primary" %>
+<% end %>
+
+<% @categories.each do |category| %>
+    <p><%= category.name %></p>
+<% end %>
