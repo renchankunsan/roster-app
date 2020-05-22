@@ -20,9 +20,13 @@
     <% end %>
   
     <div class="actions">
-      <%= f.submit "ログイン", class:"btn btn-primary" %>
+      <%= f.submit "ログイン", class:"btn btn-default" %>
     </div>
   <% end %>
   
-  <%= render "users/shared/links" %>
+  <div>
+    <%= link_to "アカウント登録", "/users/sign_up" %>
+  </div>
+  
+  <!--%= render "users/shared/links" %>-->
 </div>
