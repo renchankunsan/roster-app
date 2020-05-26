@@ -5,8 +5,8 @@
     <%= f.search_field :first_name_or_last_name_or_first_furigana_or_last_furigana_cont, placeholder:"氏名・ふりがな" %>
     <%= f.select :gender_eq, ['男', '女'], {include_blank:'性別'} %>
     <%= f.number_field :age_eq, min:0, placeholder:"年齢" %>
-    <!--%= f.select :category_id_eq, options_from_collection_for_select(@categories, :id, :name), {include_blank:'カテゴリ'} %>-->
-    <%= f.select :attendance_eq, ['未入力', '出席', '欠席', '遅刻', '早退', 'その他'], {include_blank:'出欠等'} %>
+    <%= f.select :category_id_eq, options_from_collection_for_select(@categories, :id, :name), {include_blank:'カテゴリ'} %>
+    <%= f.select :attendance_eq, ['出席', '欠席', '遅刻', '早退', 'その他'], {include_blank:'出欠等'} %>
     <%= f.submit '検索', class:"btn btn-primary" %>
 <% end %>
 
@@ -19,7 +19,7 @@
         <th>ふりがな</th>
         <th><%= sort_link(@q, :gender, "性別") %></th>
         <th><%= sort_link(@q, :age, "年齢") %></th>
-        <th>カテゴリ</th>
+        <th><%= sort_link(@q, :category, "カテゴリ") %></th>
         <th><%= sort_link(@q, :attendance, "出欠等") %></th>
         <th>詳細</th>
     </tr>
