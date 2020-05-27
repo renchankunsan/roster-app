@@ -24,6 +24,7 @@
 - ページネーション(kaminari)
 
 ## デプロイ
+https://nagumo-roster-app.herokuapp.com
 
 ## 作者
 ### **南雲 蓮**(なぐも れん)  
