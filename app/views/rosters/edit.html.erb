@@ -2,6 +2,12 @@
 
 <!--余裕あればform_withに-->
 
+<% @roster.errors.full_messages.each do |message| %>
+    <div class="form-error">
+        <%= message %>
+    </div>
+<% end %>
+
 <%= form_tag("/rosters/"+@roster.id.to_s, :method => :patch) do %>
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>

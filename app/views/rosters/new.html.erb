@@ -1,9 +1,12 @@
 <h2>名簿作成</h2>
 
-<!--undefined method `errors' for nil:NilClass-->
-<!--% if @roster.errors.any? %-->
-
 <!--余裕あればform_withに-->
+
+<% @roster.errors.full_messages.each do |message| %>
+    <div class="form-error">
+        <%= message %>
+    </div>
+<% end %>
 
 <%= form_tag("/rosters/create") do %>
     <!--<div class="form-group">-->
@@ -12,25 +15,25 @@
     <div class="form-group">
         <%= label_tag "form-name", "氏名" %>
         <div class="form-inline">
-            <%= text_field :rosters, :last_name, id:"form-name", class:"form-control" ,placeholder:"姓" %>
-            <%= text_field :rosters, :first_name, id:"form-name", class:"form-control" ,placeholder:"名" %>
+            <%= text_field :rosters, :last_name, id:"form-name", class:"form-control" ,placeholder:"姓", value: @roster.last_name %>
+            <%= text_field :rosters, :first_name, id:"form-name", class:"form-control" ,placeholder:"名", value: @roster.first_name %>
         </div>
         <%= label_tag "form-furigana", "ふりがな" %>
         <div class="form-inline">
-            <%= text_field :rosters, :last_furigana, id:"form-furigana", class:"form-control" ,placeholder:"せい" %>
-            <%= text_field :rosters, :first_furigana, id:"form-furigana", class:"form-control" ,placeholder:"めい" %>
+            <%= text_field :rosters, :last_furigana, id:"form-furigana", class:"form-control" ,placeholder:"せい", value: @roster.last_furigana %>
+            <%= text_field :rosters, :first_furigana, id:"form-furigana", class:"form-control" ,placeholder:"めい", value: @roster.first_furigana %>
         </div>
     </div>
     <div class="form-group">
-        <%= radio_button_tag 'rosters[gender]', "男" %>
+        <%= radio_button_tag 'rosters[gender]', "男", @roster.gender == "男" %>
         <%= label_tag "form-gender", "男" %>
-        <%= radio_button_tag 'rosters[gender]', "女" %>
+        <%= radio_button_tag 'rosters[gender]', "女", @roster.gender == "女" %>
         <%= label_tag "form-gender", "女" %>
     </div>
     <div class="form-group">
         <%= label_tag "form-birthday", "生年月日" %>
         <div class="form-inline">
-            <%= date_field :rosters, :birthday, id:"form-birthday", class:"form-control" %>
+            <%= date_field :rosters, :birthday, id:"form-birthday", class:"form-control", value: @roster.birthday %>
         </div>
     </div>
     <div class="form-group">
@@ -42,7 +45,7 @@
     <div class="form-group">
         <%= label_tag "form-email", "メールアドレス" %>
         <div class="form-inline">
-            <%= email_field :rosters, :email, id:"form-email", class:"form-control" ,placeholder:"メールアドレス" %>
+            <%= email_field :rosters, :email, id:"form-email", class:"form-control" ,placeholder:"メールアドレス", value: @roster.email %>
         </div>
     </div>
     <%= submit_tag "作成", class:"btn btn-primary" %>
