@@ -28,11 +28,10 @@ class RostersController < ApplicationController
                                   first_furigana: params[:rosters][:first_furigana],
                                   gender: params[:rosters][:gender],
                                   birthday: params[:rosters][:birthday],
-                                  age: (Date.today.strftime("%Y%m%d").to_i - params[:rosters][:birthday].strftime("%Y%m%d").to_i)/10000,
                                   category_id: params[:rosters][:category_id],
                                   email: params[:rosters][:email],
                                   user_id: current_user.id)
-          # @roster.age = (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000
+          @roster.age = (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000
           if @roster.save
                flash[:notice] = "名簿を作成しました"
                redirect_to "/rosters"
@@ -56,12 +55,11 @@ class RostersController < ApplicationController
                          first_furigana: params[:rosters][:first_furigana],
                          gender: params[:rosters][:gender],
                          birthday: params[:rosters][:birthday],
-                         age: (Date.today.strftime("%Y%m%d").to_i - params[:rosters][:birthday].strftime("%Y%m%d").to_i)/10000,
                          category_id: params[:rosters][:category_id],
                          email: params[:rosters][:email],
                          attendance: params[:rosters][:attendance],
                          remarks: params[:rosters][:remarks])
-          # @roster.age = (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000
+          @roster.age = (Date.today.strftime("%Y%m%d").to_i - @roster.birthday.strftime("%Y%m%d").to_i)/10000
           if @roster.save
                flash[:notice] = "名簿を編集しました"
                redirect_to "/rosters/" + params[:id].to_s + "/show"
