@@ -1,5 +1,4 @@
 class Roster < ApplicationRecord
-    belongs_to :category, optional: true
     belongs_to :user
     #画像投稿
     # mount_uploader :image, ImageUploader
